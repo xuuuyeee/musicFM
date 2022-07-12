@@ -1,0 +1,127 @@
+/* 标签组内的波形条 */
+.boxingtuFamily {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    left: -22px;
+    bottom: 4px;
+}
+.boxingtuBlock{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+}
+.boxingtuBlockShow{
+    display: block;
+    margin-top: 9px;
+}
+
+/* 波型条的四根线 */
+.boxingtuFamily div{
+    position: absolute;
+    background-color: rgb(92, 188, 125);
+    height: 12px;
+    width: 2px;
+    border-radius: 25%;
+}
+.boxingtuBlock div{
+    position: absolute;
+    background-color: white;
+    height: 12px;
+    width: 2px;
+    border-radius: 25%;
+}
+.boxingtuFamily .boxingtu1,
+.boxingtuBlock .boxingtu1{
+    left: 1px;
+    animation-duration: 2s;
+    animation-name: jump1;
+    animation-iteration-count: infinite;
+}
+
+.boxingtuFamily .boxingtu2,
+.boxingtuBlock .boxingtu2{
+    left: 4px;
+    animation-duration: 1.4s;
+    animation-name: jump2;
+    animation-iteration-count: infinite;
+}
+
+.boxingtuFamily .boxingtu3,
+.boxingtuBlock .boxingtu3{
+    left: 7px;
+    animation-duration: 1.8s;
+    animation-name: jump3;
+    animation-iteration-count: infinite;
+}
+
+.boxingtuFamily .boxingtu4,
+.boxingtuBlock .boxingtu4{
+    left: 10px;
+    animation-duration: 1s;
+    animation-name: jump4;
+    animation-iteration-count: infinite;
+}
+
+@keyframes jump1 {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(10px)
+    }
+
+    to {
+        transform: translateY(0)
+    }
+}
+
+@keyframes jump2 {
+    0% {
+        transform: translateY(10px)
+    }
+
+    50% {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(10px)
+    }
+}
+
+@keyframes jump3{
+    0% {
+        transform: translateY(10px)
+    }
+
+    50% {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(10px)
+    }
+}
+
+@keyframes jump4{
+    0% {
+        transform: translateY(10px)
+    }
+
+    50% {
+        transform: translateY(0)
+    }
+
+    to {
+        transform: translateY(10px)
+    }
+}
+

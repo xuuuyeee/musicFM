@@ -1,0 +1,200 @@
+.search-result-page{
+    position: relative;
+    max-width: 777px;
+    margin: 0 auto;
+    padding: 0;
+}
+.search-input-wrapper,.search-input-wrapper text{
+    cursor: text;
+}
+.hd{
+    margin: 0 auto;
+    padding: 0;
+}
+.search-input-wrapper {
+    height: 40px;
+    line-height: 40px;
+    width: 600px;
+    display: inline-block;
+    background: #f8f8f8;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    color: #9b9b9b;
+    padding: 0 20px;
+    position: relative;
+    margin-left: 40px;
+}
+.sousuo{
+    width: 27px;
+    height: 27px;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    fill: #9b9b9b;
+}
+.search-input-wrapper input.searchBlock{
+    border: none;
+    outline: none;
+    line-height: 42px;
+    height: 42px;
+    background-color: transparent;
+    font-size: 7px;
+    color: #4a4a4a;
+    width: 520px;
+    position: absolute;
+    left: 50px;
+    top: 0;
+    right: 50px;
+    margin: 0;
+}
+.searching {
+    text-decoration: none;
+    font-size: 17px;
+    color: rgba(17, 17, 17, .3);
+    width: 52px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    left: 690px;
+    background: rgba(133, 233, 233, .3);
+    border: 3px solid rgba(133, 233, 233, .7);
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.searching:hover {
+    background: rgba(133, 233, 233, .7);
+    color: rgba(177, 177, 177, .7);
+    border: 3px solid rgba(77, 177, 77, .3);
+    border-radius: 1em;
+    box-shadow: 0 0 7px 0 rgba(23, 23, 23, .3), 0 7px 7px 0 rgba(77, 77, 77, .3);
+}
+
+#searchingResult {
+    display: none;
+    width: 660px;
+    padding: 10px;
+    background-color: rgba(233, 233, 233, .233);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 52px;
+    margin-top: 10px;
+    /* margin: 10px auto; */
+}
+
+.searchingResultHind {
+    padding: 10px;
+    color: rgba(17, 17, 17, .7);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.searchingResult-introduce {
+    font-size: 15px;
+    font-weight: 150;
+    color: rgba(15, 15, 15, .5);
+    margin-top: 10px;
+}
+.searchingResult-header {
+    height: 42px;
+    line-height: 42px;
+    background-color: rgba(233, 233, 233, .3);
+}
+.searchingResult-header ul li {
+    list-style: none;
+    width: auto;
+    display: inline-block;
+    margin-right: 42px;
+    padding: 0 5px;
+    background-color: rgba(233, 233, 233, .3);
+}
+.searchingResult-header ul li:first-of-type {
+    margin-left: 33px;
+}
+.searchingResult-button {
+    color: rgba(13, 13, 13, .77);
+}
+.searchingResult-header ul li:last-of-type {
+    margin-right: 30px;
+}
+.searchingResult-header-container {
+    padding: 0 150px;
+}
+#searchingResult .searchingResult-header ul li a {
+    font-size: 13px;
+    font-weight: 777;
+}
+.searchingResult-button:hover {
+    color: rgba(77, 177, 77, .7);
+}
+.searchingResult-container {
+    max-width: 1024px;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+}
+.searchingResult-container::after{
+    clear: both;
+    content: "";
+    display: block;
+}
+.searchingResult-container li{
+    display: inline;
+    list-style: none;
+    width: auto;
+    margin: 0 52px;
+}
+.searchingResult-container li a{
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(42, 42, 42, .5);
+    font-size: 16px;
+    margin-right: 23px;
+}
+#searchingResult-all {
+    background-color: transparent;
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+#searchingResult-songList {
+    background-color: transparent;
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+#searchingResult-favoriteList {
+    background-color: transparent;
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+#searchingResult-singerList {
+    background-color: transparent;
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+ul.songlist-song li .index {
+    color: rgba(17, 17, 17, .7);
+    position: absolute;
+    top: 3px;
+    left: -55px;
+}
+
+ul.songlist-song li .titles h3 {
+    color: rgba(17, 17, 17, .7);
+}
+
+.searchingResultFavoriteList-message .searchingResultFavoriteList-messageSpan{
+    color: rgba(17, 17, 17, .7);
+}
+
+.typeHind {
+    color: rgba(42,42,200,.42);
+    margin-left: 520px;
+    position: absolute;
+    top: 0;
+    height: 36px;
+    line-height: 36px;
+    font-size: 20px;
+}

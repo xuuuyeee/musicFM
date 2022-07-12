@@ -1,0 +1,110 @@
+.nav-place-holder{
+    height: 60px;
+    text-align:  center;
+    margin-top: -20px;
+}
+.items{
+    column-count: 5;
+    column-gap: 10px;
+    margin: 0px 0px 0px 10%;
+}
+.explore-songlist{
+    margin-bottom: 64px;
+    list-style: none;
+    display: inline-block;
+    width: 144px;
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 15px;
+}
+.cover{
+    position: relative;
+    background-size: cover;
+}
+.gedan-playable-overlay{
+    cursor: pointer;
+    display: none;
+    width: 100%;
+    background: rgba(0,0,0,.1);
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.explore-songlist .discription{
+    display: inline-block;
+}
+.discription h3{
+    width: 144px;
+    font-size: 16px;
+    color: #000;
+    line-height: 20px;
+    padding: 0;
+    margin: 15px 0 5px;
+    font-weight: 600;
+}
+
+.discription h3 a:hover{
+    text-decoration: solid;
+}
+.discription h3 a{
+    color: #000000;
+}
+.explore-songlist p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #9b9b9b;
+    line-height: 13px;
+}
+
+.sample-songs{
+    width: 144px;
+    padding: 0;
+    margin: 15px 0 8px;
+    list-style: none;
+    word-wrap:break-word;
+}
+.sample-songs li {
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #9b9b9b;
+    line-height: 14px;
+}
+.extra-info{
+    padding: 0;
+    color: #9b9b9b;
+    line-height: 13px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.rec{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background-color: #bdc3c7;
+}
+.cir{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #ecf0f1;
+    animation: sun 10s infinite;
+}
+.smlcir{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #bdc3c7;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}

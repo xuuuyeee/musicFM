@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.musicFM.mapper.SongMapper">
+
+    <resultMap id="SongResultMap" type="com.musicFM.pojo.Song">
+        <id property="songId" column="song_id"/>
+        <result property="songName" column="song_name"/>
+        <result property="pictureHref" column="picture_href"/>
+        <result property="locateHref" column="locate_href"/>
+        <result property="lrcHref" column="lrc_href"/>
+        <!--对应实体Singer-->
+        <association property="singer" javaType="Singer">
+            <id property="singerId" column="singer_id"/>
+            <result property="singerName" column="singer_name"/>
+            <result property="sex" column="sex"/>
+            <result property="age" column="age"/>
+            <result property="singerPictureHref" column="singer_picture_href"/>
+        </association>
+        <!--对应List<Tag>-->
+        <collection property="tagList" ofType="Tag">
+            <id property="tagID" column="tag_id"/>
+            <result property="tagName" column="tag_name"/>
+        </collection>
+        <!--对应List<Favorite>-->
+        <collection property="favoriteList" ofType="Favorite">
+            <id property="favoriteId" column="favorite_id"/>
+            <result property="favoriteName" column="favorite_name"/>
+            <result property="authorId" column="author_id"/>
+            <result property="isDelete" column="is_delete"/>
+            <result property="loveID" column="love_id"/>
+            <result property="favoritePictureHref" column="favorite_picture_href"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllSong" resultMap="SongResultMap">
+        select *
+        from t_song song
+                 left join t_song_tag tst on song.song_id = tst.song_id
+                 left join t_tag tt on tst.tag_id = tt.tag_id
+                 left join t_song_favorite tsf on song.song_id = tsf.song_id
+                 left join t_favorite tf on tsf.favorite_id = tf.favorite_id,
+             t_singer singer
+        where song.singer_id = singer.singer_id
+    </select>
+
+
+    <!--Song getSongByName(@Param("songName") String songName);-->
+    <select id="getSongByName" resultMap="SongResultMap">
+        <bind name="likeName" value="'%'+songName+'%'"/>
+        select *
+        from t_song song,
+        t_singer singer
+        where song.singer_id = singer.singer_id and song.song_name like #{likeName}
+    </select>
+
+    <!-- Song getSongById(@Param("songId") Integer songId);-->
+    <select id="getSongById" resultMap="SongResultMap">
+        select *
+        from t_song song
+                 left join t_song_tag tst on song.song_id = tst.song_id
+                 left join t_tag tt on tst.tag_id = tt.tag_id,
+             t_singer singer
+        where song.song_id = #{songId}
+          and song.singer_id = singer.singer_id
+          and tst.is_delete = 0
+    </select>
+</mapper>

@@ -1,0 +1,222 @@
+#user-center-box {
+    width: 500px;
+    height: 654px;
+    margin: 42px auto 0 auto;
+    padding-top: 23px;
+    padding-bottom: 7px;
+    background-color: rgba(233, 233, 233, 0.5);
+    box-shadow: 0 0 10px 0 rgba(233, 77, 233, 0.3), 0 5px 5px 0 rgba(52, 52, 52, 0.1);
+    overflow: auto;
+    text-align: center;
+    line-height: 23px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    color: rgba(52, 233, 52, 0.9);
+}
+
+.user-center,.user-center2 {
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    margin: 5px auto;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 23px;
+    font-weight: 520;
+    color: rgba(42, 42, 42, .9);
+}
+
+.user-center2 {
+    width: 480px;
+    border: 1px rgba(233, 233, 233, .3) solid;
+    background-color: rgba(233, 233, 233, 0.5);
+    box-shadow: 0 0 1px 0 rgba(99, 52, 99, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+#user-name {
+    font-size: 23px;
+    color: rgba(255, 255, 255, 0.99);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 520;
+    background-color: rgba(0, 42, 0, 0.1);
+    margin: 0 100px;
+    margin-top: 17px;
+    margin-bottom: 13px;
+    overflow: auto;
+    height: 60px;
+    line-height: 60px;
+}
+#user-name-input {
+    width: 400px;
+    position: relative;
+    margin: 0 auto;
+    overflow: auto;
+    border-radius: .5em;
+    max-width: 420px;
+    max-height: 85px;
+    min-width: 233px;
+    min-height: 52px;
+    cursor: text;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+#self-introduction {
+    display: block;
+    width: 400px;
+    height: 100px;
+    font-size: 16px;
+    line-height: 16px;
+    position: relative;
+    margin: 0 auto;
+    overflow: auto;
+    border-radius: .5em;
+    cursor: text;
+    text-align: center;
+    border: 3px rgba(77, 77, 77, .7) solid;
+    padding: 3px;
+}
+#self-introduction-textarea {
+    display: block;
+    width: 400px;
+    height: 100px;
+    font-size: 16px;
+    line-height: 16px;
+    position: relative;
+    margin: 0 auto;
+    overflow: auto;
+    border-radius: .5em;
+    max-width: 480px;
+    max-height: 123px;
+    min-width: 300px;
+    min-height: 50px;
+    cursor: text;
+    text-align: center;
+}
+#user-center2-box .top {
+    height: 52px;
+    background-color: rgba(233,233,233,.7);
+    margin-right: 7px;
+    padding-bottom: 3px;
+}
+
+#user-center2-box .titles h3 {
+    color: rgba(17, 17, 77, .7);
+}
+#user-center2-box .titles p {
+    color: rgba(17, 17, 17, .7);
+    margin-top: 13px;
+    margin-bottom: 7px;
+}
+#user-center2-box ul.songlist-song li .index {
+    color: rgba(77, 77, 77, .7);
+    top: 7px;
+}
+#user-center2-box ul.songlist-song li:hover {
+    background-color: rgba(100, 100, 100, .1);
+}
+#user-center2-box .section-content .top:hover {
+    background-color: rgba(100, 233, 100, 0.233);
+}
+#user-center2-box li div.top:hover {
+    background-color: rgba(42, 233, 42, .3);
+}
+#user-likes-close {
+    width: 23.3px;
+    height: 23.3px;
+    position: relative;
+    left: 600px;
+    cursor: pointer;
+    margin-top: -23px;
+}
+#user-likes-songCollection-close {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 17px;
+    left: 111px;
+    cursor: pointer;
+}
+#songCollectionInnerBox {
+    width: 233px;
+    position: absolute;
+    top: 0;
+    left: 654px;
+    cursor: pointer;
+    background-color: rgba(200, 200, 200, .2);
+    height: 520px;
+    overflow: auto;
+}
+#songCollectionInnerBox #link-new-songlist {
+    width: 160px;
+    height: 42px;
+    line-height: 42px;
+    cursor: pointer;
+    background-color: rgba(200, 200, 200, .2);
+}
+#songCollectionInnerBox #link-new-songlist:hover {
+    color: rgba(20, 200, 200, .8);
+    background-color: rgba(20, 20, 20, .02);
+    box-shadow: 0 1px 1px 0 rgba(3, 3, 3, .3), 0 1px 1px 0 rgba(3, 3, 3, .3);
+}
+#songCollectionInnerBox .titles {
+    padding-left: 0;
+}
+#songCollectionInnerBox .titles:hover{
+    color: rgba(233,233,23,.3);
+}
+#songCollectionInnerBox .titles:hover .messageSpan {
+    display: block;
+}
+#songCollectionInnerBox .index {
+    position: relative;
+    font-size: 17px;
+    height: 17px;
+    line-height: 17px;
+}
+#songCollectionInnerBox li {
+    list-style: none;
+}
+#songCollectionInnerBox h3 {
+    font-size: 17px;
+    height: 17px;
+    line-height: 17px;
+    position: relative;
+}
+
+.songCollection-songlist-song .index {
+    color: rgba(77, 77, 77, .7);
+    position: absolute;
+    top: 23px;
+    left: -23px;
+}
+
+.songCollection-songlist-song .titles {
+    display: inline-block;
+    padding-left: 10px;
+    padding-top: 5px;
+    vertical-align: top;
+}
+
+#user-center2-box .actions {
+    margin: 10px;
+}
+
+.emptyHint {
+    font-family: "Adobe Devanagari";
+    font-size: 16px;
+    color: rgba(42, 42, 42, .42);
+    margin: 42px auto;
+    width: 420px;
+    text-align: center;
+}
+
+#user-center-close {
+    width: 23.3px;
+    height: 23.3px;
+    position: absolute;
+    left: 61.4%;
+    top: 4.4%;
+    border: 3px solid rgba(233,23,23,.3);
+}

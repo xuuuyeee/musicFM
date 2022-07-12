@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.musicFM.mapper.FavoriteMapper">
+
+    <resultMap id="FavoriteResultMap" type="favorite">
+        <id property="favoriteId" column="favorite_id"/>
+        <result property="favoriteName" column="favorite_name"/>
+        <result property="authorId" column="author_id"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="loveID" column="love_id"/>
+        <result property="favoritePictureHref" column="favorite_picture_href"/>
+        <!--应List<Song>-->
+        <collection property="songList" ofType="Song">
+            <id property="songId" column="song_id"/>
+            <result property="songName" column="song_name"/>
+            <result property="pictureHref" column="picture_href"/>
+            <result property="locateHref" column="locate_href"/>
+            <result property="lrcHref" column="lrc_href"/>
+            <!--对应实体Singer-->
+            <association property="singer" javaType="Singer">
+                <id property="singerId" column="singer_id"/>
+                <result property="singerName" column="singer_name"/>
+                <result property="sex" column="sex"/>
+                <result property="age" column="age"/>
+                <result property="singerPictureHref" column="singer_picture_href"/>
+            </association>
+        </collection>
+        <!--对应List<User>-->
+        <collection property="userList" ofType="User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="pwd" column="pwd"/>
+            <result property="nickName" column="nick_name"/>
+            <result property="description" column="description"/>
+            <result property="isDelete" column="is_delete"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllFavorite" resultMap="FavoriteResultMap">
+        select *
+        from t_favorite
+                 left join t_song_favorite tsf on t_favorite.favorite_id = tsf.favorite_id
+                 left join t_song ts on tsf.song_id = ts.song_id
+                 left join t_user_favorite tuf on t_favorite.favorite_id = tuf.favorite_id
+                 left join t_user tu on tuf.user_id = tu.user_id,
+             t_singer
+        where ts.singer_id = t_singer.singer_id and tsf.is_delete = 0 and  tuf.is_delete = 0  and t_favorite.is_delete = 0 and  t_favorite.love_id = 0
+    </select>
+
+    <!--Favorite getFavoriteByName(@Param("favoriteName") String favoriteName);-->
+    <select id="getFavoriteByName" resultMap="FavoriteResultMap">
+        <bind name="likeName" value="'%'+favoriteName+'%'"/>
+        select *
+        from t_favorite
+        left join t_song_favorite tsf on t_favorite.favorite_id = tsf.favorite_id
+        left join t_song ts on tsf.song_id = ts.song_id,
+        t_singer
+        where ts.singer_id = t_singer.singer_id
+        and favorite_name like #{likeName}
+        and t_favorite.is_delete = 0 and tsf.is_delete = 0 and t_favorite.love_id = 0
+    </select>
+
+
+    <!--    Integer getFavoriteCount();-->
+    <select id="getFavoriteCount" resultType="Long">
+        select count(*)
+        from t_favorite
+    </select>
+
+    <!--    删除-->
+    <!-- Integer insertFavoriteAndSong(@Param("favoriteID") Long favoriteId, @Param("songID") Long songID);-->
+    <!--    <insert id="insertFavoriteAndSong">-->
+    <!--        insert into t_song_favorite (song_id, favorite_id)-->
+    <!--        values (#{songID}, #{favoriteID});-->
+    <!--    </insert>-->
+
+    <!-- Favorite getFavoriteById(@Param("favoriteId") Long favoriteId);-->
+    <select id="getFavoriteById" resultMap="FavoriteResultMap">
+        select *
+        from t_favorite
+                 left join t_song_favorite tsf on t_favorite.favorite_id = tsf.favorite_id
+                 left join t_song ts on tsf.song_id = ts.song_id,
+             t_singer
+        where t_favorite.favorite_id = #{favoriteId}
+          and ts.singer_id = t_singer.singer_id
+          and tsf.is_delete = 0
+    </select>
+
+    <!--  Favorite getLoveFavoriteByUserId(@Param("userId") Long userId);   -->
+    <select id="getLoveFavoriteByUserId" resultMap="FavoriteResultMap">
+        select *
+        from t_favorite
+                 left join t_song_favorite tsf on t_favorite.favorite_id = tsf.favorite_id
+                 left join t_song ts on tsf.song_id = ts.song_id,
+             t_singer
+        where t_favorite.love_id = #{userId}
+          and ts.singer_id = t_singer.singer_id
+          and tsf.is_delete = 0
+    </select>
+
+    <!--  getUserHaveFavoriteByUserId(@Param("userId") Long userId);  -->
+    <select id="getUserHaveFavoriteByUserId" resultMap="FavoriteResultMap">
+        select *
+        from t_favorite
+                 left join t_user_favorite tuf on t_favorite.favorite_id = tuf.favorite_id
+                 left join t_user tu on tuf.user_id = tu.user_id
+        where tuf.user_id = #{userId}
+          and t_favorite.author_id != #{userId}
+          and love_id = 0
+          and t_favorite.is_delete = 0
+          and tuf.is_delete = 0
+    </select>
+
+    <!--  getUserCreateFavoriteByUserId(@Param("userId") Long userId); -->
+    <select id="getUserCreateFavoriteByUserId" resultMap="FavoriteResultMap">
+        select *
+        from t_favorite
+                 left join t_user_favorite tuf on t_favorite.favorite_id = tuf.favorite_id
+                 left join t_user tu on tuf.user_id = tu.user_id
+        where tuf.user_id = #{userId}
+          and t_favorite.author_id = #{userId}
+          and love_id = 0
+          and t_favorite.is_delete = 0
+          and tuf.is_delete = 0
+    </select>
+
+    <!--Integer insertLoveFavoriteByUserId(@Param("userId") Long userId, @Param("favoriteName") String favoriteName);-->
+    <insert id="insertLoveFavoriteByUserId">
+        insert into t_favorite (favorite_name, author_id, love_id) VALUE (#{favoriteName}, #{userId}, #{userId})
+    </insert>
+
+    <!--Integer insertFavoriteByUserId(@Param("userId") Long userId, @Param("favoriteName") String favoriteName);-->
+    <insert id="insertFavoriteByUserId">
+        insert into t_favorite (favorite_name, author_id) VALUE (#{favoriteName}, #{userId})
+    </insert>
+
+    <!--Integer insertSongToFavoriteByFavoriteIdAndSongId(@Param("favoriteId") Long favoriteID, @Param("songId") Long songID);-->
+    <insert id="insertSongToFavoriteByFavoriteIdAndSongId">
+        insert into t_song_favorite (song_id, favorite_id) VALUE (#{songId}, #{favoriteId})
+    </insert>
+
+    <!--   Integer deleteSongFromFavoriteBySongIdAndFavoriteId(@Param("songId") Long songId, @Param("favoriteID") Long favoriteId);   -->
+    <update id="deleteSongFromFavoriteBySongIdAndFavoriteId">
+        update t_song_favorite
+        set is_delete = 1
+        where favorite_id = #{favoriteID}
+          and song_id = #{songId}
+    </update>
+
+    <!--    Integer deleteAllSongFromFavoriteByFavoriteId(@Param("favoriteId") Long favoriteId);-->
+    <update id="deleteAllSongFromFavoriteByFavoriteId">
+        update t_song_favorite
+        set is_delete = 1
+        where favorite_id = #{favoriteId}
+    </update>
+
+    <!--    Integer deleteFavoriteByFavoriteId(@Param("favoriteId") Long favoriteId);-->
+    <update id="deleteFavoriteByFavoriteId">
+        update t_favorite
+        set is_delete = 1
+        where favorite_id = #{favoriteId}
+    </update>
+
+    <!--    Integer getCollectFavoriteUserByFavoriteId(@Param("favoriteId") Long favoriteId);-->
+    <select id="getCollectFavoriteUserByFavoriteId" resultType="Integer">
+        select count(*)
+        from t_user_favorite
+        where favorite_id = #{favoriteId} and is_delete = 0
+    </select>
+
+    <!--    Long getLoveFavoriteIdByUserId(@Param("userId") Long userId);-->
+    <select id="getLoveFavoriteIdByUserId" resultType="Long">
+        select favorite_id
+        from t_favorite
+        where love_id = #{userId}
+    </select>
+
+    <!--    Integer insertFavoriteToUserByFavoriteIdAndUserId(@Param("favoriteId") Long favoriteId, @Param("userId") Long userId);-->
+    <insert id="insertFavoriteToUserByFavoriteIdAndUserId">
+        insert t_user_favorite (user_id, favorite_id)
+        VALUES (#{userId}, #{favoriteId})
+    </insert>
+
+    <!--    Favorite getLastFavorite();-->
+    <select id="getLastFavorite" resultType="Long">
+        SELECT Max(favorite_id)
+        from t_favorite
+    </select>
+
+    <!--    Integer addPictureToFavoriteByFavoriteIdAndPictureHref(@Param("favoriteId") Long favoriteId, @Param("pictureHref") String pictureHref);-->
+    <update id="addPictureToFavoriteByFavoriteIdAndPictureHref">
+        update t_favorite
+        set t_favorite.favorite_picture_href = #{pictureHref}
+        where favorite_id = #{favoriteId}
+    </update>
+
+    <!--    Integer deleteFavoriteFromAllUserByFavoriteId(@Param("favoriteId") Long favoriteId);-->
+    <update id="deleteFavoriteFromAllUserByFavoriteId">
+        update t_user_favorite
+        set is_delete = 1
+        where favorite_id = #{favoriteId}
+    </update>
+
+</mapper>

@@ -1,0 +1,51 @@
+.section-switcher {
+    height: 100px;
+}
+.explore-svg {
+    width: 16px;
+    height: 16px;
+    position: relative;
+}
+.section-header {
+    padding-top: 42px ;
+    padding-bottom: 42px;
+    text-align: center;
+}
+.container {
+    max-width: 1024px;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+}
+.container::after{
+    clear: both;
+    content: "";
+    display: block;
+}
+.container li{
+    display: inline;
+    list-style: none;
+    width: auto;
+    margin: 0 52px;
+}
+.container li a{
+    cursor: pointer;
+    text-decoration: none;
+    color: rgba(42, 42, 42, .5);
+    font-size: 16px;
+    margin-right: 23px;
+}
+.exploreMD-button:hover {
+    color: rgba(42, 42, 42, .9);
+    font-weight: 520;
+}
+.exploreMD-button:active {
+    color: rgba(233, 42, 233, .7);
+    font-weight: 520;
+}
+.content{
+    width: 1024px;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+}

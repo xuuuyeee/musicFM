@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/change-password.css">
+    <link rel="stylesheet" href="css/createNewSonglist.css">
+    <link rel="stylesheet" href="css/explore.css">
+    <link rel="stylesheet" href="css/gedan.css">
+    <link rel="stylesheet" href="css/gedanshow.css">
+    <link rel="stylesheet" href="css/headercss.css">
+    <link rel="stylesheet" href="css/loginin.css">
+    <link rel="stylesheet" href="css/mine.css">
+    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/reset.css" >
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/show.css">
+    <link rel="stylesheet" href="css/translate.css">
+    <link rel="stylesheet" href="css/user-center.css">
+    <link rel="stylesheet" href="css/zhaohe.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <title>私人音乐电台</title>
+</head>
+
+<body>
+    <audio id="aud"></audio>
+    <div class="app-header">
+        <div class="nav-fixed">
+            <div class="big-title"><span>私人音乐电台</span></div>
+                <div id="huadongkuang" class="player-wrapper">
+                    <div class="background">
+                        <div id="zhongjianbufen" class="middle middleMU">
+                            <div class="fm-mhz fm-mhz-bottomMD">
+                                <div class="boxingtuFamily boxingtu-display">
+                                    <div class="boxingtu1"></div>
+                                    <div class="boxingtu2"></div>
+                                    <div class="boxingtu3"></div>
+                                    <div class="boxingtu4"></div>
+                                </div>
+                                <div class="fm-mhz-span">
+                                    每日精选 MHZ
+                                </div>
+                            </div>
+                            <div class="song-name song-nameMD">
+                                <a id="songName"></a>
+                                <span class="hidden-span" style="display: none;">- <span> 
+                                    <a class="routerLink singerNameTitle"></a></span></span>
+                            </div>
+                            <div class="writer-name">
+                                <span><a class="routerLink singerNameTitle"></a></span>
+                            </div>
+                            <div class="musicButtons">
+                                <div class="volume-and-time volume-and-timeMD">
+                                    <!-- 播放时间 -->
+                                    <span id="currentTime" class="time"></span>
+                                    <!-- 调节音量 -->
+                                    <span id="volume" class="volumeBlock">
+                                        <svg id="volumeBtn" class="volumeBtn" aria-hidden="true">
+                                            <use id="volumeIcon" xlink:href="#icon-24gl-volumeMiddle"></use>
+                                        </svg>
+                                        <input id="music-volume" type="range" min="0" value="600" max="1000"> 
+                                    </span>
+                                </div>
+                                <!-- 显示歌词 -->
+                                <div class="sub-buttons-wrapper">
+                                    <div id="lyric-button" class="sub-buttons">
+                                        <label title="显示歌词">
+                                            <svg class="geci" aria-hidden="true">
+                                                <use xlink:href="#icon-geci"></use>
+                                            </svg>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- 下四按钮 -->
+                                <div class="playing-buttons playing-buttonsMD">
+                                    <div>
+                                        <label title="收藏">
+                                            <svg class="like down-svg" aria-hidden="true">
+                                                <use xlink:href="#icon-xin"></use>
+                                            </svg>
+                                        </label>
+                                        <span class="down-span"></span>
+                                        <label title="不再播放">
+                                            <svg class="dislike down-svg" aria-hidden="true">
+                                                <use xlink:href="#icon-shanchu"></use>
+                                            </svg>
+                                        </label>
+                                        <div class="playingButtons-right">
+                                            <label title="播放">
+                                                <svg id="play" class="play_or_stop down-svg" aria-hidden="true">
+                                                    <use xlink:href="#icon-bofang"></use>
+                                                </svg>
+                                            </label>
+                                            <span class="down-span "></span>
+                                            <label title="下一首">
+                                                <svg class="next down-svg" aria-hidden="true">
+                                                    <use xlink:href="#icon-xiayishou"> </use>
+                                                </svg>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 进度条 -->
+                            <div class="playing-progress">
+                                <span class="progress-line"></span>
+                                <input type="range" min="0" max="100" value="0" class="progress" id="progress"style="border: none;">
+                            </div>
+                        </div>
+                        <!-- 歌词 -->
+                        <div class="left leftShow">
+                            <div class="lyric-box">
+                                <ul id="lyrics-content" class="lyric-content"></ul>
+                                <svg class="close-lyric-box">
+                                    <use xlink:href="#icon-guanbi"></use>
+                                </svg>
+                            </div>
+                        </div>
+                        <!-- 封面 -->
+                        <div class="right rightShow">
+                            <div id="cover-box" class="playing-cover">
+                                <div id="cover"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- 下拉键 -->
+            <div class="keyButton keyButtonMU">
+                <svg id="keyBtn">
+                    <use xlink:href="#icon-down"></use>
+                </svg>
+            </div>
+            <!-- 用户模块 -->
+            <div class="fr">
+                <div class="user-block">
+                    <div id="enter-box">
+                        <a class="sign-in" href="javascript:;">登录</a>
+                        <span>|</span>
+                        <a class="register" href="javascript:;">注册</a>
+                    </div>
+                    <div id="user-menu" title="用户菜单" style="display: none;">
+                        <p id="user-menu-nickName"></p>
+                        <div id="user-menu-box">
+                            <div class="userinfo" title="个人介绍" id="main-self-introduction"></div>
+                            <div class="userinfo" title="个人中心" id="user-center">个人中心</div>
+                            <div class="userinfo" title="修改密码" id="change-password">修改密码</div>
+                            <div class="userinfo" title="退出登录" id="log-out">退出登录</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="exploreMD">
+            <div class="section-switcher">
+                <div class="section-header">
+                    <ul class="container">
+                        <li class="tab-/explore/channels">
+                            <a class="routerLink exploreMD-button" href="/zhaohe" id="zhaohe">
+                                <svg class="explore-svg">
+                                    <use xlink:href="#icon-shouyinji"></use>
+                                </svg>
+                                兆赫
+                            </a>
+                        </li>
+                        <li class="tab-/explore/songlists">
+                            <a class="routerLink exploreMD-button" href="/gedanShow" id="gedan">
+                                <svg class="explore-svg">
+                                    <use xlink:href="#icon-yinpingedan"></use>>
+                                </svg>
+                                歌单
+                            </a>
+                        </li>
+                        <li class="tab-/explore/mine">
+                            <a href="/mine" class="routerLink exploreMD-button" id="mine">
+                                <svg class="explore-svg">
+                                    <use xlink:href="#icon-xihuan"></use>>
+                                </svg>
+                                我的
+                            </a>
+
+                        </li>
+                        <li class="tab-/explore/search">
+                            <a href="/search" class="routerLink exploreMD-button" id="search">
+                                <svg class="explore-svg">
+                                    <use xlink:href="#icon-sousuo"></use>>
+                                </svg>
+                                搜索
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="content">
+        </div>
+    </div>
+    <script src="src/download/font/iconfont.js"></script>
+    <script src="src/download/fontul/iconfont.js"></script>
+    <script src="js/SimpleRoute.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

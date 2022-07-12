@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.musicFM.mapper.SingerMapper">
+
+    <resultMap id="SingerResultMap" type="singer">
+        <id property="singerId" column="singer_id"/>
+        <result property="singerName" column="singer_name"/>
+        <result property="sex" column="sex"/>
+        <result property="age" column="age"/>
+        <result property="singerPictureHref" column="singer_picture_href"/>
+        <!-- 对应List<Song> -->
+        <collection property="songList" ofType="Song">
+            <id property="songId" column="song_id"/>
+            <result property="songName" column="song_name"/>
+            <result property="pictureHref" column="picture_href"/>
+            <result property="locateHref" column="locate_href"/>
+            <result property="lrcHref" column="lrc_href"/>
+        </collection>
+        <!-- 对应List<User> -->
+        <collection property="userList" ofType="User">
+            <id property="userId" column="user_id"/>
+            <result property="userName" column="user_name"/>
+            <result property="pwd" column="pwd"/>
+            <result property="nickName" column="nick_name"/>
+            <result property="description" column="description"/>
+            <result property="isDelete" column="is_delete"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllSinger" resultMap="SingerResultMap">
+        select *
+        from t_singer singer
+                 left join t_user_singer tus on singer.singer_id = tus.singer_id
+                 left join t_user tu on tu.user_id = tus.user_id,
+             t_song song
+        where song.singer_id = singer.singer_id
+    </select>
+
+    <!-- Singer getSingerByName(@Param("singerName") String singerName); -->
+    <select id="getSingerByName" resultMap="SingerResultMap">
+        <bind name="likeName" value="'%'+singerName+'%'"/>
+        select *
+        from t_singer singer,
+        # left join t_user_singer tus on singer.singer_id = tus.singer_id
+        # left join t_user tu on tu.user_id = tus.user_id,
+        t_song song
+        where song.singer_id = singer.singer_id
+        and singer.singer_name like #{likeName}
+    </select>
+
+    <!--    添加喜欢歌手数量-->
+
+    <!--  Singer getSingerById(@Param("singerID") Integer singerID);-->
+    <select id="getSingerById" resultMap="SingerResultMap">
+        select *
+        from t_singer singer,
+             t_song song
+        where song.singer_id = singer.singer_id
+          and singer.singer_id = #{singerID}
+    </select>
+
+    <!--   Integer getSingerCount();-->
+    <select id="getSingerCount" resultType="Long">
+        select count(*)
+        from t_singer
+    </select>
+
+    <!-- List<Singer> getSameSingerByTagIdAndSingerId(@Param("tagId") Long tagId, @Param("singerId") Long singerId);-->
+    <select id="getSameSingerByTagIdAndSingerId" resultMap="SingerResultMap">
+        select *
+        from t_singer singer,
+             t_song song
+                 left join t_song_tag tst on song.song_id = tst.song_id
+                 left join t_tag tt on tst.tag_id = tt.tag_id
+        where tt.tag_id = #{tagId}
+          and singer.singer_id != #{singerId}
+          and song.singer_id = singer.singer_id
+          and tst.is_delete = 0
+
+    </select>
+
+    <!--     Integer insertSingerToUserBySingerIdAndUserId(@Param("singerId") Long singerId, @Param("userId") Long userId);-->
+    <insert id="insertSingerToUserBySingerIdAndUserId">
+        insert into t_user_singer (singer_id, user_id) VALUE (#{singerId}, #{userId})
+    </insert>
+
+    <!--        Integer getCollectSingerUserBySingerId(@Param("singerId") Long singerId);-->
+    <select id="getCollectSingerUserBySingerId" resultType="Integer">
+        select count(*)
+        from t_user_singer
+        where singer_id = #{singerId}
+        and is_delete = 0
+    </select>
+
+    <!--    List<Singer> getLoveSingerByUserId(@Param("userId") Long userId);-->
+    <select id="getLoveSingerByUserId" resultMap="SingerResultMap">
+        select *
+        from t_singer
+                 left join t_user_singer tus on t_singer.singer_id = tus.singer_id
+                 left join t_user tu on tus.user_id = tu.user_id
+        where tu.user_id = #{userId}
+          and tus.is_delete = 0
+    </select>
+
+</mapper>

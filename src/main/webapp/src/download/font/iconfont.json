@@ -1,0 +1,93 @@
+{
+  "id": "3281469",
+  "name": "音乐播放器",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "11891844",
+      "name": "down",
+      "font_class": "down",
+      "unicode": "e679",
+      "unicode_decimal": 59001
+    },
+    {
+      "icon_id": "7417092",
+      "name": "下一首",
+      "font_class": "xiayishou",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "1248",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "151086",
+      "name": "心",
+      "font_class": "xin",
+      "unicode": "e622",
+      "unicode_decimal": 58914
+    },
+    {
+      "icon_id": "755613",
+      "name": "暂停",
+      "font_class": "stop",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "1621427",
+      "name": "播放",
+      "font_class": "bofang",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "12316060",
+      "name": "歌词",
+      "font_class": "geci",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "7592563",
+      "name": "24gl-volumeCross",
+      "font_class": "24gl-volumeCross",
+      "unicode": "ea0b",
+      "unicode_decimal": 59915
+    },
+    {
+      "icon_id": "7592564",
+      "name": "24gl-volumeDisable",
+      "font_class": "24gl-volumeDisable",
+      "unicode": "ea0c",
+      "unicode_decimal": 59916
+    },
+    {
+      "icon_id": "7592565",
+      "name": "24gl-volumeHigh",
+      "font_class": "24gl-volumeHigh",
+      "unicode": "ea0d",
+      "unicode_decimal": 59917
+    },
+    {
+      "icon_id": "7592567",
+      "name": "24gl-volumeLow",
+      "font_class": "24gl-volumeLow",
+      "unicode": "ea0e",
+      "unicode_decimal": 59918
+    },
+    {
+      "icon_id": "7592568",
+      "name": "24gl-volumeMiddle",
+      "font_class": "24gl-volumeMiddle",
+      "unicode": "ea0f",
+      "unicode_decimal": 59919
+    }
+  ]
+}

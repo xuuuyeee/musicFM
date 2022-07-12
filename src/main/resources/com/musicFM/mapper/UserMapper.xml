@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.musicFM.mapper.UserMapper">
+
+    <resultMap id="UserResultMap" type="user">
+        <id property="userId" column="user_id"/>
+        <result property="userName" column="user_name"/>
+        <result property="pwd" column="pwd"/>
+        <result property="nickName" column="nick_name"/>
+        <result property="description" column="description"/>
+        <result property="isDelete" column="is_delete"/>
+
+        <collection property="favoriteList" ofType="Favorite">
+            <id property="favoriteId" column="favorite_id"/>
+            <result property="favoriteName" column="favorite_name"/>
+            <result property="authorId" column="author_id"/>
+            <result property="isDelete" column="is_delete"/>
+            <result property="loveID" column="love_id"/>
+            <result property="favoritePictureHref" column="favorite_picture_href"/>
+        </collection>
+
+        <collection property="singerList" ofType="Singer">
+            <id property="singerId" column="singer_id"/>
+            <result property="singerName" column="singer_name"/>
+            <result property="sex" column="sex"/>
+            <result property="age" column="age"/>
+            <result property="singerPictureHref" column="singer_picture_href"/>
+        </collection>
+    </resultMap>
+
+    <select id="selectAllUser" resultMap="UserResultMap">
+        select *
+        from t_user tu
+                 left join t_user_favorite tuf on tu.user_id = tuf.user_id
+                 left join t_favorite tf on tuf.favorite_id = tf.favorite_id
+                 left join t_user_singer tus on tu.user_id = tus.user_id
+                 left join t_singer ts on tus.singer_id = ts.singer_id
+    </select>
+
+    <select id="getNickNameById" resultType="String">
+        select u.nick_name
+        from t_user u
+        where u.user_id=#{userId}
+    </select>
+
+    <!--   List<User> getUserByName(@Param("userName") String userName); -->
+    <select id="getUserByName" resultMap="UserResultMap">
+        select *
+        from t_user tu
+        where user_name = #{userName}
+          and is_delete = 0
+    </select>
+
+    <!--User loginUserByUserNameAndPwd(@Param("userName") String userName, @Param("pwd") String pwd);-->
+    <select id="loginUserByUserNameAndPwd" resultMap="UserResultMap">
+        select *
+        from t_user tu
+            left join t_user_favorite tuf on tu.user_id = tuf.user_id
+            left join t_favorite tf on tuf.favorite_id = tf.favorite_id
+        where user_name = #{userName}
+          and pwd = #{pwd}
+          and tu.is_delete = 0
+          and tu.user_id = tf.love_id
+    </select>
+
+    <!--User regestUser(@Param("userName") String userName, @Param("pwd") String pwd, @Param("nickName") String nickName);-->
+    <insert id="regestUser">
+        insert into t_user (user_name, pwd, nick_name)
+        SELECT #{userName},#{pwd}, #{nickName}
+         from DUAL where NOT EXISTS (select * from t_user where user_name = #{userName} and is_delete = 0)
+    </insert>
+
+    <!--  Integer deleteSingerFormUserBySingerIdAndUserId(@Param("singerId") Long singerId, @Param("userId") Long userId);  -->
+    <update id="deleteSingerFormUserBySingerIdAndUserId">
+        update t_user_singer
+        set is_delete = 1
+        where singer_id = #{singerId}
+          and user_id = #{userId}
+    </update>
+
+    <!--  Integer deleteFavoriteFromUserByFavoriteIdAndUserId(@Param("favoriteId") Long favoriteID, @Param("userId") Long userId);  -->
+    <update id="deleteFavoriteFromUserByFavoriteIdAndUserId">
+        update t_user_favorite
+        set is_delete = 1
+        where favorite_id = #{favoriteId}
+          and user_id = #{userId}
+    </update>
+
+    <!--    Integer deleteUserByUserID(@Param("userId") Long userId);-->
+    <update id="deleteUserByUserID">
+        update t_user
+        set is_delete = 1
+        where user_id = #{userId}
+    </update>
+
+    <!-- Integer modifyNickNameByUserIdAndNickName(@Param("userId") Long userId, @Param("nickName") String nickName);   -->
+    <update id="modifyNickNameByUserIdAndNickName">
+        update t_user
+        set nick_name = #{nickName}
+        where user_id = #{userId}
+    </update>
+
+    <!--     Integer modifyPwdByUserIdAndAndOldPwdAndNewPwd(@Param("userId") Long userId, @Param("oldPwd") String oldPwd,@Param("newPwd") String newPwd);   -->
+    <update id="modifyPwdByUserIdAndAndOldPwdAndNewPwd">
+        update t_user
+        set pwd = #{newPwd}
+        where user_id = #{userId}
+          and pwd = #{oldPwd}
+    </update>
+
+    <!--  Integer modifyDescriptionByUserIdAndDescription(@Param("userId") Long userId, @Param("description") String description);-->
+    <update id="modifyDescriptionByUserIdAndDescription">
+        update t_user
+        set description = #{description}
+        where user_id = #{userId}
+    </update>
+
+    <!--    Integer deleteAllSingerFromUserByUserId(@Param("userId") Long userId);-->
+    <update id="deleteAllSingerFromUserByUserId">
+        update t_user_singer
+        set is_delete = 1
+        where user_id = #{userId}
+    </update>
+
+    <!--    Integer deleteAllFavoriteFromUserByUserId(@Param("userId") Long userId);-->
+    <update id="deleteAllFavoriteFromUserByUserId">
+        update t_user_favorite
+        set is_delete = 1
+        where user_id = #{userId}
+    </update>
+
+
+</mapper>

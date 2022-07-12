@@ -1,0 +1,128 @@
+.register-block {
+    z-index: 100000;
+    position: fixed;
+    background-color: rgba(52, 52, 52, 0.9);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 520px;
+    border-radius: 2px;
+    border: 5px solid rgba(42, 42, 42, 0.42);
+    box-sizing: content-box;
+    border-radius: 24px;
+    z-index: 100000;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.register-box {
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24); */
+}
+
+.register-box h1 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 30px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(233, 233, 233, 0.233);
+}
+
+.register-box input[type="text"],
+.register-box input[type="password"],
+.register-box input[type="email"] {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #ecf0f1;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: #7f8c8d;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.register-box input[type="text"]:focus,
+.register-box input[type="password"]:focus,
+.register-box input[type="email"]:focus {
+    width: 250px;
+    border-color: #7f8c8d;
+}
+
+.hint {
+    font-size: 10px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    padding-left: 42px;
+    display: block;
+    text-align: left;
+    color: rgba(42, 233, 233, 0.7);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 200px;
+    height: 20px;
+}
+
+.register-box #submit {
+    background-color: rgba(255, 255, 255, 0.9);
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid rgb(233, 233, 233);
+    padding: 14px 20px;
+    width: 160px;
+    outline: none;
+    color: rgba(25, 25, 25, 0.7);
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+}
+
+.register-box #submit:hover {
+    background-color: white;
+    color: black;
+}
+
+.message {
+    color: rgba(233, 233, 233, 0.7);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.message a {
+    color: rgba(42, 233, 233, 0.7);
+}
+
+.white-background {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .7;
+}
+
+.guanbi{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    fill: white;
+    cursor: pointer;
+    font-weight: 100;
+    z-index: 100001;
+}

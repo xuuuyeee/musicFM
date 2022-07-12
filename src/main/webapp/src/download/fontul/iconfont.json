@@ -1,0 +1,58 @@
+{
+  "id": "3316700",
+  "name": "音乐播放器2",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "1494637",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "1253",
+      "name": "收藏",
+      "font_class": "shoucang",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "4118038",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "eb6a",
+      "unicode_decimal": 60266
+    },
+    {
+      "icon_id": "1740401",
+      "name": "古典-音频歌单",
+      "font_class": "yinpingedan",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "2076194",
+      "name": "喜欢",
+      "font_class": "xihuan",
+      "unicode": "e86f",
+      "unicode_decimal": 59503
+    },
+    {
+      "icon_id": "2678637",
+      "name": "搜索",
+      "font_class": "sousuo",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "2746604",
+      "name": "收音机",
+      "font_class": "shouyinji",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    }
+  ]
+}

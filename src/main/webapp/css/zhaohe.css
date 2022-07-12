@@ -1,0 +1,186 @@
+.content::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.content {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    width: 1025px;
+}
+
+.specialChannel {
+    margin: 10px 0 40px;
+}
+
+.channels-block {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.channels-block ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.channels-block h3 {
+    display: block;
+    position: relative;
+    text-align: left;
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9b9b9b;
+    line-height: 20px;
+}
+
+.title {
+    text-align: left;
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #9b9b9b;
+}
+
+.channel {
+    width: 204px;
+    list-style: none;
+    display: block;
+    float: left;
+    text-align: center;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.channel-rounded {
+    height: 248px;
+}
+
+.fengmian {
+    height: 108px;
+    width: 108px;
+    display: inline-block;
+    position: relative;
+    margin-top: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
+    cursor: pointer;
+}
+
+.channel div.fengmian {
+    border-radius: 50%;
+}
+.bofangShow {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -9px;
+    margin-top: -12px;
+    width: 25px;
+    height: 25px;
+    fill: white;
+}
+
+.disNone {
+    display: none;
+}
+
+.channel-rounded .fengmian:hover .playable-overlay,
+.explore-songlist .fengmian:hover .gedan-playable-overlay{
+    display: block;
+}
+
+.title {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #4a4a4a;
+    line-height: 18px;
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+
+.subtitle {
+    font-size: 12px;
+    color: #acacac;
+    font-weight: 500;
+    margin-top: 8px;
+    padding: 0 10px;
+    max-height: 32px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 16px;
+}
+
+/* 平时是none */
+.playable-overlay {
+    display: none;
+    width: 100%;
+    background: rgba(0, 0, 0, .1);
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.playable-overlayShow {
+    display: block;
+    width: 100%;
+    background: rgba(0, 0, 0, .1);
+    text-align: center;
+    color: #fff;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.button-more {
+    background-color: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #9b9b9b;
+    line-height: 30px;
+    height: 30px;
+    margin-top: 30px;
+    padding: 0 20px;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    vertical-align: bottom;
+    white-space: nowrap;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+.mhz {
+    margin-left: 0.5em;
+    font-size: 10px;
+    line-height: 14px;
+    color: #acacac;
+    vertical-align: bottom;
+    font-weight: 500;
+}
+
+.clear {
+    clear: both;
+}

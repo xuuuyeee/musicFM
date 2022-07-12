@@ -1,0 +1,96 @@
+.createNewSonglist-block {
+    z-index: 100000;
+    position: fixed;
+    background-color: rgba(160, 160, 160, .16);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    height: 300px;
+    border-radius: 2px;
+    border: 5px solid rgba(233, 233, 233, .233);
+    box-sizing: content-box;
+    border-radius: 24px;
+    z-index: 100000;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.createNewSonglist-block h1 {
+    color: rgba(52, 52, 52, .52);
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 30px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+    background-color: rgba(160, 160, 160, 0.16);
+    height: 42px;
+    line-height: 42px;
+    width: 233px;
+    margin: 42px auto;
+}
+
+.createNewSonglist-block-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    fill: rgba(42, 42, 42, 0.42);
+    cursor: pointer;
+    font-weight: 100;
+    z-index: 200000;
+}
+
+.login-box input[type="text"] {
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #ecf0f1;
+    padding: 16px 10px;
+    width: 200px;
+    outline: none;
+    color: #7f8c8d;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.login-box input[type="text"]:focus {
+    width: 250px;
+    border-color: #7f8c8d;
+}
+
+.createNewSonglist-block #create {
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 3px solid rgb(233, 233, 233);
+    padding: 10px 20px;
+    width: 160px;
+    outline: none;
+    color: rgb(25, 25, 25, 0.7);
+    border-radius: 2.3em;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+}
+
+.createNewSonglist-block #create:hover {
+    background-color: white;
+    color: black;
+}
+
+.createNewSonglist-block .hint {
+    font-size: 10px;
+    padding-left: 42px;
+    display: block;
+    text-align: left;
+    color: rgba(42, 233, 233, 0.7);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 233px;
+    height: 20px;
+    margin: -10px auto;
+}
